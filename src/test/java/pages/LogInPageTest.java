@@ -28,6 +28,8 @@ public class LogInPageTest {
 
         driver.get("https://www.demoblaze.com/");
         driver.manage().window().maximize();
+
+        clickLogInHeader();
     }
 
     @After
@@ -44,8 +46,6 @@ public class LogInPageTest {
 
     @Test
     public void testLogInValidData(){
-        clickLogInHeader();
-
         logInPage.fillForm("qwerty1!", "qwerty1!");
 
         WebElement usernameElement = new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOfElementLocated(By.id("nameofuser")));
@@ -58,8 +58,6 @@ public class LogInPageTest {
 
     @Test
     public void testLogInSpellingHeader(){
-        clickLogInHeader();
-
         String actualResult = logInPage.getLogInPageHeader();
         String expectedResult = "Log in";
 
@@ -68,8 +66,6 @@ public class LogInPageTest {
 
     @Test
     public void testLogInSpellingUsernameTextField(){
-        clickLogInHeader();
-
         String actualResult = logInPage.getLogInPageUsernameTitle();
         String expectedResult = "Username:";
 
@@ -78,8 +74,6 @@ public class LogInPageTest {
 
     @Test
     public void testLogInSpellingPasswordTextField(){
-        clickLogInHeader();
-
         String actualResult = logInPage.getLogInPagePasswordTitle();
         String expectedResult = "Password:";
 
@@ -89,8 +83,6 @@ public class LogInPageTest {
     //With a weak password, account authorization with a message without specific information does not occur, but for some reason registration occurs.
     @Test
     public void testLogInWeakPassword(){
-        clickLogInHeader();
-
         logInPage.fillForm("Username333", "Password333");
 
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.alertIsPresent());
