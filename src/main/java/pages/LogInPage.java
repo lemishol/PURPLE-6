@@ -1,9 +1,15 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import unassigned.Page;
+
+import java.time.Duration;
+
 import static constants.XPath.LogInPage.*;
 
 public class LogInPage extends Page {
@@ -31,9 +37,12 @@ public class LogInPage extends Page {
     @FindBy(xpath = LOGIN_BUTTON)
     private WebElement logInButton;
 
+
     public LogInPage(WebDriver driver) {
         super(driver);
     }
+
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
     public void fillUsername(String username){
         fillField(usernameField, username);
@@ -43,35 +52,30 @@ public class LogInPage extends Page {
         fillField(passwordField, password);
     }
 
-    public WebElement getLoginHeader() {
-        return loginHeader;
+    public void fillForm(String username, String password){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(USERNAME_FIELD)));
+
+        fillUsername(username);
+        fillPassword(password);
+
+        logInButton.click();
     }
 
-    public WebElement getUsernameTitleField() {
-        return usernameTitleField;
+    public String getLogInPageHeader(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(HEADER)));
+
+        return  loginHeader.getText();
     }
 
-    public WebElement getUsernameField() {
-        return usernameField;
+    public String getLogInPageUsernameTitle(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(USERNAME_TITLE_FIELD)));
+
+        return  usernameTitleField.getText();
     }
 
-    public WebElement getPasswordTitleField() {
-        return passwordTitleField;
-    }
+    public String getLogInPagePasswordTitle(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PASSWORD_TITLE_FIELD)));
 
-    public WebElement getPasswordField() {
-        return passwordField;
-    }
-
-    public WebElement getCloseButton() {
-        return closeButton;
-    }
-
-    public WebElement getCloseIcon() {
-        return closeIcon;
-    }
-
-    public WebElement getLogInButton() {
-        return logInButton;
+        return  passwordTitleField.getText();
     }
 }

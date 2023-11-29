@@ -35,21 +35,20 @@ public class LogInPageTest {
         driver.quit();
     }
 
-    @Test
-    public void testLogInValidData(){
+    private void clickLogInHeader(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
         WebElement loginHeaderTitleButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LOGIN_BUTTON)));
         loginHeaderTitleButton.click();
+    }
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(USERNAME_FIELD)));
+    @Test
+    public void testLogInValidData(){
+        clickLogInHeader();
 
-        logInPage.fillUsername("qwerty1!");
-        logInPage.fillPassword("qwerty1!");
+        logInPage.fillForm("qwerty1!", "qwerty1!");
 
-        logInPage.getLogInButton().click();
-
-        WebElement usernameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nameofuser")));
+        WebElement usernameElement = new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOfElementLocated(By.id("nameofuser")));
 
         String actualResult = usernameElement.getText();
         String expectedResult = "Welcome qwerty1!";
@@ -59,14 +58,9 @@ public class LogInPageTest {
 
     @Test
     public void testLogInSpellingHeader(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        clickLogInHeader();
 
-        WebElement loginHeaderTitleButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LOGIN_BUTTON)));
-        loginHeaderTitleButton.click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(HEADER)));
-
-        String actualResult = logInPage.getLoginHeader().getText();
+        String actualResult = logInPage.getLogInPageHeader();
         String expectedResult = "Log in";
 
         assertEquals(expectedResult, actualResult);
@@ -74,14 +68,9 @@ public class LogInPageTest {
 
     @Test
     public void testLogInSpellingUsernameTextField(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        clickLogInHeader();
 
-        WebElement loginHeaderTitleButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LOGIN_BUTTON)));
-        loginHeaderTitleButton.click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(USERNAME_TITLE_FIELD)));
-
-        String actualResult = logInPage.getUsernameTitleField().getText();
+        String actualResult = logInPage.getLogInPageUsernameTitle();
         String expectedResult = "Username:";
 
         assertEquals(expectedResult, actualResult);
@@ -89,14 +78,9 @@ public class LogInPageTest {
 
     @Test
     public void testLogInSpellingPasswordTextField(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        clickLogInHeader();
 
-        WebElement loginHeaderTitleButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LOGIN_BUTTON)));
-        loginHeaderTitleButton.click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PASSWORD_TITLE_FIELD)));
-
-        String actualResult = logInPage.getPasswordTitleField().getText();
+        String actualResult = logInPage.getLogInPagePasswordTitle();
         String expectedResult = "Password:";
 
         assertEquals(expectedResult, actualResult);
@@ -105,19 +89,11 @@ public class LogInPageTest {
     //With a weak password, account authorization with a message without specific information does not occur, but for some reason registration occurs.
     @Test
     public void testLogInWeakPassword(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        clickLogInHeader();
 
-        WebElement loginHeaderTitleButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LOGIN_BUTTON)));
-        loginHeaderTitleButton.click();
+        logInPage.fillForm("Username333", "Password333");
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(USERNAME_FIELD)));
-
-        logInPage.fillUsername("Username333");
-        logInPage.fillPassword("Password333");
-
-        logInPage.getLogInButton().click();
-
-        wait.until(ExpectedConditions.alertIsPresent());
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.alertIsPresent());
 
         Alert alert = driver.switchTo().alert();
         String actualResult = alert.getText();
