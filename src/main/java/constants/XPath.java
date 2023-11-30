@@ -1,5 +1,16 @@
 package constants;
-
+public class XPath {
+    
+    public interface Common {
+         String GENERAL_HOME_BUTTON = "//*[@id='nava']",
+                HOME_BUTTON = "//*[@class='nav-link' and @href='index.html']",
+                CONTACT_BUTTON = "//*[@data-target='#exampleModal']",
+                ABOUT_US_BUTTON = "//*[@data-target='#videoModal']",
+                CART_BUTTON = "//*[@id='cartur']",
+                LOGIN_BUTTON = "//*[@data-target='#logInModal']",
+                SIGNUP_BUTTON = "//*[@data-target='#signInModal']";
+    }
+    
 public interface HomePage{
     String CAROUSEL_PREVIOUS_ITEM_BUTTON="//a[contains(@class,'carousel-control-prev')]",
             CAROUSEL_NEXT_ITEM_BUTTON="//a[contains(@class,'carousel-control-next')]",
@@ -15,19 +26,6 @@ public interface HomePage{
             SLIDER_2="//li[contains(@data-slide-to, 1)]",
             SLIDER_3="//li[contains(@data-slide-to, 2)]";
 }
-
-    public interface HomePage{
-         String CAROUSEL_PREVIOUS_ITEM_BUTTON="//span[contains(text(),'Previous')]",
-                CAROUSEL_NEXT_ITEM_BUTTON="//span[contains(text(),'Next')]",
-                CATEGORIES_A="//a[@id=\"cat\"]",
-                CATEGORIES_PHONES="//a[contains(text(), 'Phones')]",
-                CATEGORIES_LAPTOPS="//a[contains(text(), 'Laptops')]",
-                CATEGORIES_MONITORS="//a[contains(text(), 'Monitors')]",
-                PREVIOUS_PAGE_BUTTON="//button[contains(text(),'Previous')]",
-                NEXT_PAGE_BUTTON="//button[contains(text(),'Next')]",
-                ALL_PRODUCT_CARDS_IMAGES_A="//img[contains(@class, 'card-img-top') and contains(@class, 'img-fluid')]/..",
-                ALL_PRODUCT_CARDS_A="//a[contains(@class, 'hrefch')]";
-    }
 
     public interface ContactPage {
          String EMAIL_FIELD = "//input[@id='recipient-email']",
