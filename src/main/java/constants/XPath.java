@@ -45,8 +45,15 @@ public class XPath {
 
                 CANCEL_BUTTON = "//*[@id='orderModal']//button[contains(text(), 'Close')]",
                 PURCHASE_BUTTON = "//*[@id='orderModal']//button[contains(text(), 'Purchase')]",
-                EXIT_BUTTON = "//*[@id='orderModal']//*[@aria-label='Close']";
-
+                EXIT_BUTTON = "//*[@id='orderModal']//*[@aria-label='Close']",
+                ORDER_HEADER = "//*[@id='orderModalLabel']",
+                TOTAL_LABEL = "//label[@id='totalm']",
+                NAME_LABEL = "//*[@class='form-group']//*[@for='name']",
+                COUNTRY_LABEL = "//*[@for='country']",
+                CITY_LABEL = "//*[@for='city']",
+                CREDIT_CARD_LABEL = "//*[@for='card']",
+                MONTH_LABEL = "//*[@for='month']",
+                YEAR_LABEL = "//*[@for='year']";
     }
 
     public interface LogInPage {
