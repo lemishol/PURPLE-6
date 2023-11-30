@@ -27,7 +27,7 @@ public class CartPageTest {
         cartPage=new CartPage(driver);
 
         driver.get("https://www.demoblaze.com/");
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
 
     }
 
