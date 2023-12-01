@@ -3,18 +3,16 @@ package pages;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.How;
-import unassigned.Page;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import static constants.XPath.HomePage.*;
 
-public class HomePage extends Page{
+public class HomePage extends BasePage {
     @FindBy(xpath=CAROUSEL_PREVIOUS_ITEM_BUTTON)
     private WebElement carouselPrevButton;
     @FindBy(xpath=CAROUSEL_NEXT_ITEM_BUTTON)

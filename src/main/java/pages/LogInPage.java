@@ -6,13 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import unassigned.Page;
 
 import java.time.Duration;
 
 import static constants.XPath.LogInPage.*;
 
-public class LogInPage extends Page {
+public class LogInPage extends BasePage {
     @FindBy(xpath = HEADER)
     private WebElement loginHeader;
 
