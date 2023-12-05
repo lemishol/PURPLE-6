@@ -29,7 +29,7 @@ public class HomePage extends BasePage {
     private WebElement prevPageButton;
     @FindBy(xpath=NEXT_PAGE_BUTTON)
     private WebElement nextPageButton;
-    @FindBys(@FindBy(how= How.XPATH, using = ALL_PRODUCT_CARDS_IMAGES_A))
+    @FindBys(@FindBy(xpath = ALL_PRODUCT_CARDS_IMAGES_A))
     private List<WebElement> allProdImgA;
     @FindBys(@FindBy(xpath=ALL_PRODUCT_CARDS_A))
     private List<WebElement> allProdA;

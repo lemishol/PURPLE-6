@@ -4,15 +4,13 @@ import constants.Signs;
 import constants.XPath;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,17 +18,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.stream.Stream;
 
 import static constants.Locators.Item.*;
-import static constants.XPath.CartPage.*;
+import static constants.XPath.CartPage.PRODUCTS_SUCCESS;
+import static constants.XPath.CartPage.TOTAL_PRICE;
 import static constants.XPath.Common.CART_BUTTON;
 import static constants.Messages.CartMessages.*;
-import static constants.Signs.CartPage.*;
 import static constants.Inputs.Cart.*;
+import static constants.XPath.HomePage.ALL_PRODUCT_CARDS_A;
 import static org.junit.Assert.assertEquals;
-
-import pages.CartPage.*;
+import static org.junit.Assert.assertThrows;
 
 public class CartPageTest {
     private CartPage cartPage;
@@ -74,6 +71,7 @@ public class CartPageTest {
         WebElement waitingTwo = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ADD_TO_CART_BUTTON_XPATH)));
         driver.findElement(By.xpath(ADD_TO_CART_BUTTON_XPATH)).click();
+        driver.findElement(By.xpath(ADD_TO_CART_BUTTON_XPATH)).click();
     }
 
     private void getToCart(){
@@ -81,11 +79,13 @@ public class CartPageTest {
         WebElement waiting = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CART_BUTTON)));
         driver.findElement(By.xpath(CART_BUTTON)).click();
-        cartPage.clickOnPlaceOrderButton();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
     }
 
     @Test
     public void testPlacingAnOrderValidData(){
+        cartPage.clickOnPlaceOrderButton();
         cartPage.fillNameField(NAME_FIELD_INPUT);
         cartPage.fillCountryField(COUNTRY_FIELD_INPUT);
         cartPage.fillCityField(CITY_FIELD_INPUT);
@@ -95,7 +95,21 @@ public class CartPageTest {
         cartPage.clickOnPurchaseButton();
         assertEquals(REGULAR_MESSAGE,cartPage.getResultText());
     }
-
+    @Test
+    public void testTotalPriceWithNoProducts(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        cartPage.clickOnDeleteButton();
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath(PRODUCTS_SUCCESS), 1));
+        cartPage.clickOnDeleteButton();
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath(PRODUCTS_SUCCESS), 0));
+        assertEquals("",cartPage.getTotalPrice());
+    }
+    @Test
+    public  void testTotalPriceWithTwoProducts(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(TOTAL_PRICE))));
+        assertEquals("720",cartPage.getTotalPrice());
+    }
     @CsvSource({
             INVALID_EMPTY_INPUT + "," + COUNTRY_FIELD_INPUT + "," + CITY_FIELD_INPUT + ","
                     + CREDIT_CART_FIELD_INPUT + "," + MONTH_FIELD_INPUT + "," + YEAR_FIELD_INPUT,
@@ -114,7 +128,8 @@ public class CartPageTest {
     })
     @ParameterizedTest(name = "index=> firstInput=''{0}'', secondInput=''{1}'', thirdInput=''{2}'', fourthInput=''{3}'', fifthInput=''{4}'', sixthInput=''{5}''")
     public void testPlacingAnOrderMissingData(String firstInput, String secondInput, String thirdInput,
-                                              String fourthInput, String fifthInput,String sixthInput) {
+                                              String fourthInput, String fifthInput,String sixthInput){
+        cartPage.clickOnPlaceOrderButton();
         cartPage.fillNameField(firstInput);
         cartPage.fillCountryField(secondInput);
         cartPage.fillCityField(thirdInput);
@@ -125,22 +140,8 @@ public class CartPageTest {
         assertEquals(ALERT_MESSAGE,cartPage.getAlertText());
     }
 
-
-
-    @Test
-    public void testPlacingAnOrderInvalidDataNoName(){;
-        cartPage.fillNameField(INVALID_EMPTY_INPUT);
-        cartPage.fillCountryField(COUNTRY_FIELD_INPUT);
-        cartPage.fillCityField(CITY_FIELD_INPUT);
-        cartPage.fillCreditCardField(CREDIT_CART_FIELD_INPUT);
-        cartPage.fillMonthField(MONTH_FIELD_INPUT);
-        cartPage.fillYearField(YEAR_FIELD_INPUT);
-        cartPage.clickOnPurchaseButton();
-        assertEquals(ALERT_MESSAGE,cartPage.getAlertText());
-    }
-
-
     private String getLabelText(String xpath) {
+        cartPage.clickOnPlaceOrderButton();
         WebElement waiting = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 
@@ -176,7 +177,8 @@ public class CartPageTest {
     })
 
     @ParameterizedTest(name = "index=> xpath=''{0}'', expectedLabel=''{1}''")
-    public void testLabelText(String xpath, String expectedLabel) {
+    public void testSpellingMakingAnOrder(String xpath, String expectedLabel) {
+        cartPage.clickOnPlaceOrderButton();
         assertEquals(expectedLabel, getLabelText(xpath));
     }
 

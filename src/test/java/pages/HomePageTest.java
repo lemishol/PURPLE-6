@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static constants.XPath.HomePage.*;
 
-public class HomePageTest {
+public class HomePageTest  {
     private HomePage homePage;
     private WebDriver driver;
     @Before
@@ -55,66 +55,50 @@ public class HomePageTest {
         assertEquals(expected, actual);
     }
     @Test
-    public void testPrevPageButtonOnA(){
+    public void testPrevPageButtonOnA() throws InterruptedException{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(CATEGORIES_A)));
         homePage.clickCategoriesA();
         wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath(ALL_PRODUCT_CARDS_A), 9));
         List<String> expected = homePage.getAllProdNames();
         homePage.clickPrevPageButton();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         List<String> actual = homePage.getAllProdNames();
         assertEquals(expected, actual);
     }
     @Test
-    public void testPrevPageButtonOnM(){
+    public void testPrevPageButtonOnM() throws InterruptedException{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(CATEGORIES_MONITORS)));
         homePage.clickCategoriesM();
         wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath(ALL_PRODUCT_CARDS_A), 2));
         List<String> expected = homePage.getAllProdNames();
         homePage.clickPrevPageButton();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         List<String> actual = homePage.getAllProdNames();
         assertEquals(expected, actual);
     }
     @Test
-    public void testPrevPageButtonOnL(){
+    public void testPrevPageButtonOnL() throws InterruptedException{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(CATEGORIES_LAPTOPS)));
         homePage.clickCategoriesL();
         wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath(ALL_PRODUCT_CARDS_A), 6));
         List<String> expected = homePage.getAllProdNames();
         homePage.clickPrevPageButton();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         List<String> actual = homePage.getAllProdNames();
         assertEquals(expected, actual);
     }
     @Test
-    public void testPrevPageButtonOnP(){
+    public void testPrevPageButtonOnP() throws InterruptedException{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(CATEGORIES_PHONES)));
         homePage.clickCategoriesP();
         wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath(ALL_PRODUCT_CARDS_A), 7));
         List<String> expected = homePage.getAllProdNames();
         homePage.clickPrevPageButton();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         List<String> actual = homePage.getAllProdNames();
         assertEquals(expected, actual);
     }
