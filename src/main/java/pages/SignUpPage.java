@@ -49,7 +49,7 @@ public class SignUpPage extends BasePage{
 
         return  SignUpHeader.getText();
     }
-     public String getSignUpPageUsernameTitle(){
+     public String getSignUpPageEmailTitle(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(EMAIL_TITLE_FIELD)));
          
     public String getLogInPagePasswordTitle(){
