@@ -34,16 +34,26 @@ public class ContactPage extends BasePage{
 
     public ContactPage(WebDriver driver) { super(driver); }
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    
     public void fillEmail(String email){
         fillField(emailField, email);
     }
+    
+    public String getEmailLabel(){return emailLabel.getText(); }
+    
     public void fillUsername(String username){
         fillField(usernameField, username);
     }
+    
+     public String getUsernameLabel(){ return nameLabel.getText(); }
+    
     public void fillMassage(String massage){fillField(massageField, massage); }
     public String getEmailLabel(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(HEADER)));
         return contactHeader.getText();
     }
+    
+      public String getMassageLabel(){return massageLabel.getText(); }
+    public void clickOnSendButton() { sendButton.click() ;}
 
 }
