@@ -11,6 +11,9 @@ import java.time.Duration;
 
 import static constants.XPath.LogInPage.*;
 
+/**
+ * @author Georgiy Chanturia
+ */
 public class LogInPage extends BasePage {
     @FindBy(xpath = HEADER)
     private WebElement loginHeader;
@@ -51,12 +54,7 @@ public class LogInPage extends BasePage {
         fillField(passwordField, password);
     }
 
-    public void fillForm(String username, String password){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(USERNAME_FIELD)));
-
-        fillUsername(username);
-        fillPassword(password);
-
+    public void clickLogInButton(){
         logInButton.click();
     }
 
