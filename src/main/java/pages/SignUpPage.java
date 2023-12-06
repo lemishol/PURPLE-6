@@ -30,40 +30,19 @@ public class SignUpPage extends BasePage{
     private WebElement SignUpButton;
 
 
-    public SignUpPage(WebDriver driver) {
-        super(driver);
-    }
-
+  public SignUpPage(WebDriver driver) { super(driver); }
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-
-    public void fillUsername(String email){
+    
+    public void fillEmail(String email){
         fillField(emailField, email);
     }
-
+    
+    public String getEmailLabel(){return emailLabel.getText(); }
+    
     public void fillPassword(String password){
         fillField(passwordField, password);
     }
-
-    public String getSignUpPageHeader(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(HEADER)));
-
-        return  SignUpHeader.getText();
-    }
-     public String getSignUpPageEmailTitle(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(EMAIL_TITLE_FIELD)));
-         
-    public String getLogInPagePasswordTitle(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PASSWORD_TITLE_FIELD)));
-
-    // public String getSignUpPageUsernameTitle(){
-    //    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(USERNAME_TITLE_FIELD)));
-
-    //  return  usernameTitleField.getText();
-    //}
-
-//    public String getSignUpPagePasswordTitle(){
-    //      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PASSWORD_TITLE_FIELD)));
-
-    //    return  passwordTitleField.getText();
-}
-
+    
+     public String getPasswordLabel(){ return nameLabel.getText(); }
+    
+        public void clickOnSendButton() { sendButton.click() ;}
