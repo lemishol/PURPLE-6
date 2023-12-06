@@ -10,4 +10,10 @@ public class Inputs {
                 YEAR_FIELD_INPUT = "2027",
                 INVALID_EMPTY_INPUT = "''";
     }
+
+    public interface Contact {
+        String EMAIL_FIELD_INPUT = "test@gmail.com",
+               USERNAME_FIELD_INPUT = "tester",
+               MESSAGE_FIELD_INPUT = "Hello, I'd like to return an item";
+    }
 }
