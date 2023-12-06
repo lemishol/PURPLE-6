@@ -22,10 +22,10 @@ public class ContactPage extends BasePage{
     private WebElement nameLabel;
     @FindBy(xpath = NAME_FIELD)
     private WebElement usernameField;
-    @FindBy(xpath = MASSAGE_LABEL)
-    private WebElement massageLabel;
-    @FindBy(xpath = MASSAGE_FIELD)
-    private WebElement massageField;
+    @FindBy(xpath = MESSAGE_LABEL)
+    private WebElement messageLabel;
+    @FindBy(xpath = MESSAGE_FIELD)
+    private WebElement messageField;
     @FindBy(xpath = CLOSE_BUTTON)
     private WebElement closeButton;
     @FindBy(xpath = SEND_BUTTON)
@@ -34,26 +34,38 @@ public class ContactPage extends BasePage{
 
     public ContactPage(WebDriver driver) { super(driver); }
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    
-    public void fillEmail(String email){
-        fillField(emailField, email);
-    }
-    
-    public String getEmailLabel(){return emailLabel.getText(); }
-    
-    public void fillUsername(String username){
-        fillField(usernameField, username);
-    }
-    
-     public String getUsernameLabel(){ return nameLabel.getText(); }
-    
-    public void fillMassage(String massage){fillField(massageField, massage); }
-    public String getEmailLabel(){
+    public String getContactHeader(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(HEADER)));
         return contactHeader.getText();
     }
-    
-      public String getMassageLabel(){return massageLabel.getText(); }
-    public void clickOnSendButton() { sendButton.click() ;}
+    public void fillEmail(String email){
+        fillField(emailField, email);
+    }
+
+    public String getEmailLabel(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(EMAIL_LABEL)));
+        return emailLabel.getText();
+    }
+    public void fillUsername(String username){
+        fillField(usernameField, username);
+    }
+
+    public String getUsernameLabel(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(NAME_LABEL)));
+        return nameLabel.getText();
+    }
+    public void fillMessage(String message){fillField(messageField, message); }
+    public String getMessageLabel(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(MESSAGE_LABEL)));
+        return messageLabel.getText();
+    }
+    public void clickSendButton() { sendButton.click() ;}
+    public void fillData(String email, String username, String message) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(EMAIL_FIELD)));
+        fillEmail(email);
+        fillUsername(username);
+        fillMessage(message);
+        sendButton.click();
+    }
 
 }
