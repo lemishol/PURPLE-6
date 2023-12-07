@@ -1,15 +1,0 @@
-
-a
-java:S1192%"FDefine a constant instead of duplicating this literal "Orest" 3 times.(®¦ıÿÿÿÿ
-Q
-java:S1854"6Remove this useless assignment to local variable "sb".(€ê±Õúÿÿÿÿ
-B
-java:S1481"'Remove this unused "sb" local variable.(€ê±Õúÿÿÿÿ
-7
-java:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ
-7
-java:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ
-?	java:S106*"+Replace this use of System.out by a logger.(ò¦
-E	java:S106+"+Replace this use of System.out by a logger.(µÀ„Úÿÿÿÿÿ
-@	java:S106/"+Replace this use of System.out by a logger.(ÿâÓ
-E	java:S1060"+Replace this use of System.out by a logger.(„Ğ‘Àıÿÿÿÿ
