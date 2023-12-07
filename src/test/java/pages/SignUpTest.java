@@ -74,5 +74,15 @@ public class SignUpPageTest {
         String expectedResult = USERNAME_LABEL;
         assertEquals(expectedResult, actualResult);
     }
+      @Test
+    public void testSignUpInvalidPassword(){
+        SignUpPage.fillUsername(USERNAME_FIELD_INPUT);
+        SignUpPage.fillPassword(PASSWORD_FIELD_INVALID);
+        SignUpPage.clickOnSignUpButton();
+        Alert message = driver.switchTo().alert();
+        String actualResult = message.getText();
+        String expectedResult = ALERT_MESSAGE;
+        assertEquals(expectedResult, actualResult);
+    }
 
 }
