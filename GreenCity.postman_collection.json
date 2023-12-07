@@ -1,0 +1,470 @@
+{
+	"info": {
+		"_postman_id": "7104a283-97b8-4848-aab4-3aabfe0dce8e",
+		"name": "GreenCity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31612667",
+		"_collection_link": "https://gold-meadow-427278.postman.co/workspace/My-Workspace~cd57a211-c55c-48cf-8b96-dc5e1e2540e1/collection/31612667-7104a283-97b8-4848-aab4-3aabfe0dce8e?action=share&source=collection_link&creator=31612667"
+	},
+	"item": [
+		{
+			"name": "own-security-controller",
+			"item": [
+				{
+					"name": "signIn",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"accessToken\", jsonData.accessToken);\r",
+									"pm.collectionVariables.set(\"userId\", jsonData.userId);\r",
+									"pm.collectionVariables.set(\"refreshToken\", jsonData.refreshToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"email\": \"{{email}}\",\r\n\"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}ownSecurity/signIn",
+							"host": [
+								"{{URL}}ownSecurity"
+							],
+							"path": [
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"hasPassword\", true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}ownSecurity/password-status",
+							"host": [
+								"{{URL}}ownSecurity"
+							],
+							"path": [
+								"password-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Session Expiry Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.setRequestTimeout(6000); \r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: \"https://greencity-user.greencity.social/\",\r",
+									"    method: \"GET\",\r",
+									"    header: {\r",
+									"        \"Authorization\": \"Bearer \" + pm.environment.get(\"authToken\") + \"_expired\"\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    pm.test(\"Unauthorized request\", function () {\r",
+									"        pm.expect(response).to.have.property(\"code\", 401);\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"pm.setRequestTimeout(pm.environment.get(\"initialTimeout\"));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signUp with existing user email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"let signUpWtihExEmail = {   \r",
+									"    \"type\": \"array\",\r",
+									"    \"properties\": {\r",
+									"        \"name\": {\r",
+									"            \"type\":\"string\"\r",
+									"        },\r",
+									"        \"message\":{\r",
+									"            \"type\": \"string\"\r",
+									"        }\r",
+									"    },\r",
+									"    \"required\": [\r",
+									"        \"name\",\r",
+									"        \"message\"\r",
+									"    ]\r",
+									"}\r",
+									"pm.test(\"Schema is valid\", function() {\r",
+									"    pm.expect(tv4.validate(pm.response.json(), signUpWtihExEmail)).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"email\": \"{{email}}\", \"isUbs\": true, \"name\": \"{{name}}\", \"password\": \"{{password}}\"}"
+						},
+						"url": {
+							"raw": "{{URL}}ownSecurity/signUp?lang={{languageCode}}",
+							"host": [
+								"{{URL}}ownSecurity"
+							],
+							"path": [
+								"signUp"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "{{languageCode}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signUp with nonexisting user email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"let signUpWtihNonexEmail = {   \r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"email\": {\r",
+									"            \"type\":\"string\"\r",
+									"        },\r",
+									"        \"ownRegistrations\": {\r",
+									"            \"type\":\"boolean\"\r",
+									"        },\r",
+									"        \"userId\": {\r",
+									"            \"type\":\"long\"\r",
+									"        },\r",
+									"        \"username\":{\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \r",
+									"    },\r",
+									"    \"required\": [\r",
+									"        \"email\",\r",
+									"        \"ownRegistrations\",\r",
+									"        \"userId\",\r",
+									"        \"username\"\r",
+									"    ]\r",
+									"}\r",
+									"pm.test(\"Schema is valid\", function() {\r",
+									"    pm.expect(tv4.validate(pm.response.json(), signUpWtihNonexEmail)).to.be.true\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"email\": \"{{$randomEmail}}\", \"isUbs\": true, \"name\": \"{{$randomFirstName}}\", \"password\": \"{{$randomPassword}}!\"}"
+						},
+						"url": {
+							"raw": "{{URL}}ownSecurity/signUp",
+							"host": [
+								"{{URL}}ownSecurity"
+							],
+							"path": [
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "user-controller",
+			"item": [
+				{
+					"name": "findById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"role\", jsonData.role);\r",
+									"pm.collectionVariables.set(\"userStatus\", jsonData.userStatus);\r",
+									"pm.collectionVariables.set(\"verifyEmail\", jsonData.verifyEmail);\r",
+									"pm.collectionVariables.set(\"emailNotification\", jsonData.emailNotification);\r",
+									"pm.collectionVariables.set(\"name\", jsonData.name);\r",
+									"pm.collectionVariables.set(\"languageCode\", jsonData.languageVO.code);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}user/findById?id=1099",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"findById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1099"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://greencity-user.greencity.social/"
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": "rudykartem44@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "Artikman2004!",
+			"type": "string"
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		},
+		{
+			"key": "role",
+			"value": ""
+		},
+		{
+			"key": "userStatus",
+			"value": ""
+		},
+		{
+			"key": "verifyEmail",
+			"value": ""
+		},
+		{
+			"key": "emailNotification",
+			"value": ""
+		},
+		{
+			"key": "name",
+			"value": ""
+		},
+		{
+			"key": "code",
+			"value": ""
+		},
+		{
+			"key": "languageCode",
+			"value": ""
+		}
+	]
+}
