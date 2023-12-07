@@ -68,13 +68,14 @@ public interface HomePage{
     }
 
     public interface SignUpPage{
-         String USERNAME_FIELD = "//input[@id='sign-username']",
+        String USERNAME_FIELD = "//input[@id='sign-username']",
                 HEADER = "//*[@id='signInModalLabel']",
                 USERNAME_TITLE_FIELD = "//label[@for='sign-username' and contains(@class, 'form-control-label')]",
                 PASSWORD_FIELD = "//input[@id='sign-password']",
                 PASSWORD_TITLE_FIELD = "//label[@for='sign-password' and contains(@class, 'form-control-label')]",
                 SIGNUP_BUTTON ="//button[contains(text(),'Sign up')]",
                 CLOSE_BUTTON="//*[@id='signInModal']//button[contains(text(),'Close')]";
+
 
     }
 }
