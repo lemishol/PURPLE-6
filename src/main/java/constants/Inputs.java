@@ -10,4 +10,9 @@ public class Inputs {
                 YEAR_FIELD_INPUT = "2027",
                 INVALID_EMPTY_INPUT = "''";
     }
+      public interface SignUp{
+        String USERNAME_FIELD_INPUT = "konoplytska12@gmail.com",
+                PASSWORD_FIELD_INPUT = "123456778",
+
+    }
 }
