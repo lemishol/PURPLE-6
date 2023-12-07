@@ -33,8 +33,6 @@ public interface HomePage{
                 EMAIL_FIELD = "//input[@id='recipient-email']",
                 NAME_LABEL = "//label[@for='recipient-name' and contains(text(),'Contact Name:')]",
                 NAME_FIELD = "//input[@id='recipient-name']",
-                MASSAGE_LABEL = "//label[@for='massage-text' and contains(@class, 'form-control-label')]",
-                MASSAGE_FIELD = "//input[@id='message-text']",
                 SEND_BUTTON = "//button[contains(text(),'Send massage`)]",
                 CLOSE_BUTTON = "//*[@id='exampleModal']//button[contains(text(), 'Close')]";
     }
