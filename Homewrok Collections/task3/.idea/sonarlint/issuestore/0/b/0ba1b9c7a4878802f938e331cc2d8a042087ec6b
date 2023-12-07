@@ -1,16 +1,0 @@
-
-X
-java:S1854
-"6Remove this useless assignment to local variable "sb".(€ê±Õúÿÿÿÿ8ı†Ğ »1
-I
-java:S1481
-"'Remove this unused "sb" local variable.(€ê±Õúÿÿÿÿ8ÿ†Ğ »1
->
-java:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ8‡Ğ »1
-G	java:S106"+Replace this use of System.out by a logger.(¢Ÿ†õ8„‡Ğ »1
-L	java:S106"+Replace this use of System.out by a logger.(ÈŸ¯šÿÿÿÿÿ8…‡Ğ »1
-L	java:S106"+Replace this use of System.out by a logger.(é“•Èÿÿÿÿÿ8…‡Ğ »1
-L	java:S106 "+Replace this use of System.out by a logger.(ÈŸ¯šÿÿÿÿÿ8…‡Ğ »1
-G	java:S106#"+Replace this use of System.out by a logger.(Ô†Æ8†‡Ğ »1
-L	java:S106$"+Replace this use of System.out by a logger.(ÈŸ¯šÿÿÿÿÿ8†‡Ğ »1
-G	java:S106&"+Replace this use of System.out by a logger.(åïãÅ8†‡Ğ »1
