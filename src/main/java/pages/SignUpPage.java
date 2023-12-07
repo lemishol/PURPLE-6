@@ -13,10 +13,10 @@ public class SignUpPage extends BasePage{
     @FindBy(xpath = HEADER)
     private WebElement SignUpHeader;
 
-    @FindBy(xpath = EMAIL_FIELD)
-    private WebElement emailField;
-    @FindBy(xpath = EMAIL_TITLE_FIELD)
-    private WebElement emailTitleField;
+    @FindBy(xpath = USERNAME_FIELD)
+    private WebElement usernameField;
+    @FindBy(xpath = USERNAME_TITLE_FIELD)
+    private WebElement usernameTitleField;
 
     @FindBy(xpath = PASSWORD_FIELD)
     private WebElement passwordField;
@@ -30,19 +30,23 @@ public class SignUpPage extends BasePage{
     private WebElement SignUpButton;
 
 
-  public SignUpPage(WebDriver driver) { super(driver); }
+    public SignUpPage(WebDriver driver) { super(driver); }
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    
-    public void fillEmail(String email){
-        fillField(emailField, email);
+
+    public void fillUsername(String email){
+        fillField(usernameField, email);
     }
-    
-    public String getEmailLabel(){return emailLabel.getText(); }
-    
+
+    public String getUsernameLabel(){return usernameField.getText(); }
+    public String getSignUpHeader(){return SignUpHeader.getText(); }
+
+
     public void fillPassword(String password){
         fillField(passwordField, password);
     }
-    
-     public String getPasswordLabel(){ return nameLabel.getText(); }
-    
-        public void clickOnSendButton() { sendButton.click() ;}
+
+    public String getPasswordLabel(){ return passwordTitleField.getText(); }
+
+    public void clickOnSignUpButton() { SignUpButton.click() ;}
+    public void closeButton() { closeButton.click() ;}
+}
