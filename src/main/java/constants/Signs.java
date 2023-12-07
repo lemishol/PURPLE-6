@@ -11,4 +11,9 @@ public class Signs {
         MONTH_LABEL = "Month:",
         YEAR_LABEL = "Year:";
     }
+    public interface SignUpPage{
+        String PASSWORD_LABEL = "Password:",
+         SIGNUP_HEADER = "Sign up",
+        USERNAME_LABEL = "Username:";
+    }
 }
