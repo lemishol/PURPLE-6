@@ -30,8 +30,8 @@ public class ContactPageTest {
 
         driver.get("https://www.demoblaze.com/");
         driver.manage().window().maximize();
-
     }
+    
     @After
     public void tearDown() {
         driver.quit();
@@ -74,7 +74,7 @@ public class ContactPageTest {
     @Test
     public void testContactHeader(){
         String actualResult = contactPage.getContactHeader();
-        String expectedResult = CONTACT_EMAIL_LABEL;
+        String expectedResult = CONTACT_HEADER_LABEL;
         assertEquals(expectedResult, actualResult);
     }
     
