@@ -11,6 +11,12 @@ public class Inputs {
                 INVALID_EMPTY_INPUT = "''";
     }
 
+      public interface SignUp{
+        String USERNAME_FIELD_INPUT = "konoplytska12@gmail.com",
+                PASSWORD_FIELD_INPUT = "123456778",
+            PASSWORD_FIELD_INVALID = "///";
+      }
+
     public interface LogIn {
         String HEADER_TEXT = "Log in",
                 USERNAME_TITLE_FIELD_TEXT = "Username:",
@@ -27,11 +33,12 @@ public class Inputs {
                 NUMBERS_PASSWORD_WITHOUT_SPECIAL_CHARACTERS = "12345678a",
                 NUMBERS_PASSWORD_WITHOUT_LETTER = "1234567!",
                 AUTHORIZED_USER = "Welcome " + VALID_USERNAME;
-
+    }
     public interface Contact {
         String EMAIL_VALID_INPUT = "test@gmail.com",
                INVALID_INPUT_DATA = "###",
                USERNAME_FIELD_INPUT = "tester",
                MESSAGE_FIELD_INPUT = "Hello, I'd like to return an item";
+
     }
 }
