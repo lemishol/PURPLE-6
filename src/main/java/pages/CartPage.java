@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,6 +69,8 @@ public class CartPage extends BasePage {
     @FindBy(xpath = YEAR_LABEL)
     private WebElement yearLabel;
 
+    @FindBy(xpath = TOTAL_PRICE)
+    private WebElement totalPrice;
     public CartPage(WebDriver driver) {
         super(driver);
     }
@@ -75,7 +78,7 @@ public class CartPage extends BasePage {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
     public void clickOnDeleteButton(){
-        cartDeleteButton.click();
+            cartDeleteButton.click();
     }
 
     public void clickOnPlaceOrderButton(){
@@ -150,5 +153,6 @@ public class CartPage extends BasePage {
     public String getYearLabelText(){
         return yearLabel.getText();
     }
+    public String getTotalPrice(){ return totalPrice.getText(); }
 
 }

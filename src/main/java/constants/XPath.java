@@ -62,7 +62,9 @@ public interface HomePage{
                 CITY_LABEL = "//*[@for='city']",
                 CREDIT_CARD_LABEL = "//*[@for='card']",
                 MONTH_LABEL = "//*[@for='month']",
-                YEAR_LABEL = "//*[@for='year']";
+                YEAR_LABEL = "//*[@for='year']",
+                        TOTAL_PRICE= "//*[@id='totalp']",
+                        PRODUCTS_SUCCESS="//*[@class='success']";
     }
 
     public interface LogInPage {
