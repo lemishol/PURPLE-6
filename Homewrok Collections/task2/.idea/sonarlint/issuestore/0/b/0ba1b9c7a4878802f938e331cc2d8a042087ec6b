@@ -1,0 +1,15 @@
+
+h
+java:S1192%"FDefine a constant instead of duplicating this literal "Orest" 3 times.(®¦ıÿÿÿÿ8Ğ×ì€»1
+X
+java:S1854"6Remove this useless assignment to local variable "sb".(€ê±Õúÿÿÿÿ8â×ì€»1
+I
+java:S1481"'Remove this unused "sb" local variable.(€ê±Õúÿÿÿÿ8ä×ì€»1
+>
+java:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ8æ×ì€»1
+>
+java:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ8ê×ì€»1
+F	java:S106*"+Replace this use of System.out by a logger.(ò¦8î×ì€»1
+L	java:S106+"+Replace this use of System.out by a logger.(µÀ„Úÿÿÿÿÿ8ğ×ì€»1
+G	java:S106/"+Replace this use of System.out by a logger.(ÿâÓ8ò×ì€»1
+L	java:S1060"+Replace this use of System.out by a logger.(„Ğ‘Àıÿÿÿÿ8ò×ì€»1

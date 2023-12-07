@@ -1,0 +1,31 @@
+
+n
+java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(ïü¦8®¨±º1
+B
+java:S3457"%String contains no format specifiers.(ïü¦8®¨±º1
+G	java:S106"+Replace this use of System.out by a logger.(ïü¦8®¨±º1
+G	java:S106"+Replace this use of System.out by a logger.(Ï†Û 8¯¨±º1
+s
+java:S3457"Q%n should be used in place of \n to produce the platform-specific line separator.(•É¹¥ûÿÿÿÿ8¯¨±º1
+G
+java:S3457"%String contains no format specifiers.(•É¹¥ûÿÿÿÿ8¯¨±º1
+L	java:S106"+Replace this use of System.out by a logger.(•É¹¥ûÿÿÿÿ8¯¨±º1
+c
+java:S3457"AFormat specifiers should be used instead of string concatenation.(÷¸˜Àùÿÿÿÿ8¯¨±º1
+L	java:S106"+Replace this use of System.out by a logger.(÷¸˜Àùÿÿÿÿ8°¨±º1
+s
+java:S3457#"Q%n should be used in place of \n to produce the platform-specific line separator.(˜Šùÿÿÿÿ8°¨±º1
+G
+java:S3457#"%String contains no format specifiers.(˜Šùÿÿÿÿ8°¨±º1
+L	java:S106#"+Replace this use of System.out by a logger.(˜Šùÿÿÿÿ8±¨±º1
+G	java:S106%"+Replace this use of System.out by a logger.(Ï†Û 8±¨±º1
+s
+java:S3457("Q%n should be used in place of \n to produce the platform-specific line separator.(•É¹¥ûÿÿÿÿ8˜ÁŸ±º1
+G
+java:S3457("%String contains no format specifiers.(•É¹¥ûÿÿÿÿ8˜ÁŸ±º1
+L	java:S106("+Replace this use of System.out by a logger.(•É¹¥ûÿÿÿÿ8˜ÁŸ±º1
+c
+java:S3457*"AFormat specifiers should be used instead of string concatenation.(÷¸˜Àùÿÿÿÿ8™ÁŸ±º1
+L	java:S106*"+Replace this use of System.out by a logger.(÷¸˜Àùÿÿÿÿ8™ÁŸ±º1
+T
+java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ8±¨±º1

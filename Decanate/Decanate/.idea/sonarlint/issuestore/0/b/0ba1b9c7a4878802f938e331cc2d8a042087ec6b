@@ -1,0 +1,32 @@
+
+o
+java:S3776
+"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Çµí‘8éç–„¹1
+X	java:S125+"<This block of commented-out lines of code should be removed.(²ôê„8îç–„¹1
+G	java:S1063"+Replace this use of System.out by a logger.(Ú÷Ü¾8ðç–„¹1
+O
+java:S61263"2Replace this String concatenation with Text block.(Ú÷Ü¾8ðç–„¹1
+m	java:S128J"LEnd this switch case with an unconditional break, return or throw statement.(‰ÆÄÎþÿÿÿÿ8ñç–„¹1
+G	java:S1068"+Replace this use of System.out by a logger.(’»Áú8ñç–„¹1
+^
+java:S3457="AFormat specifiers should be used instead of string concatenation.(‡´àˆ8òç–„¹1
+G	java:S106="+Replace this use of System.out by a logger.(‡´àˆ8òç–„¹1
+D
+java:S1125A"'Remove the unnecessary boolean literal.(Û¢Š¤8òç–„¹1
+L	java:S106B"+Replace this use of System.out by a logger.(æäŠµýÿÿÿÿ8òç–„¹1
+^
+java:S3457G"AFormat specifiers should be used instead of string concatenation.(‡´àˆ8òç–„¹1
+G	java:S106G"+Replace this use of System.out by a logger.(‡´àˆ8òç–„¹1
+G	java:S106M"+Replace this use of System.out by a logger.(™Ÿ£ß8óç–„¹1
+L	java:S106P"+Replace this use of System.out by a logger.(…ÞÕøÿÿÿÿ8óç–„¹1
+G	java:S106X"+Replace this use of System.out by a logger.(¢´Ï…8ôç–„¹1
+L	java:S106["+Replace this use of System.out by a logger.(ž×”ÿÿÿÿÿ8ôç–„¹1
+G	java:S106^"+Replace this use of System.out by a logger.(ã˜é8ôç–„¹1
+L	java:S106e"+Replace this use of System.out by a logger.(žùÀþÿÿÿÿÿ8ôç–„¹1
+G	java:S106h"+Replace this use of System.out by a logger.(²ç’À8ôç–„¹1
+G	java:S106k"+Replace this use of System.out by a logger.(Ö‚àá8ôç–„¹1
+L	java:S106q"+Replace this use of System.out by a logger.(«ûöøÿÿÿÿ8õç–„¹1
+F	java:S106v"+Replace this use of System.out by a logger.(Ëê›y8õç–„¹1
+G	java:S106|"+Replace this use of System.out by a logger.(æ±¢™8öç–„¹1
+H	java:S106ƒ"+Replace this use of System.out by a logger.(ºøö8öç–„¹1
+M	java:S106Ž"+Replace this use of System.out by a logger.(®ŒËìýÿÿÿÿ8öç–„¹1
