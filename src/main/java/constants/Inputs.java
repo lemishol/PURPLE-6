@@ -13,6 +13,7 @@ public class Inputs {
       public interface SignUp{
         String USERNAME_FIELD_INPUT = "konoplytska12@gmail.com",
                 PASSWORD_FIELD_INPUT = "123456778",
+            PASSWORD_FIELD_INVALID = "///";
 
     }
 }
