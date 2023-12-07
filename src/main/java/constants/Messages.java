@@ -7,6 +7,6 @@ public class Messages {
     }
      public interface SignUpMessages{
         String REGULAR_MESSAGE = "Thank you for your registration!",
-                ALERT_MESSAGE = "Please fill out Name and Creditcard.";
+                ALERT_MESSAGE = "Incorect password";
     }
 }
