@@ -27,5 +27,11 @@ public class Inputs {
                 NUMBERS_PASSWORD_WITHOUT_SPECIAL_CHARACTERS = "12345678a",
                 NUMBERS_PASSWORD_WITHOUT_LETTER = "1234567!",
                 AUTHORIZED_USER = "Welcome " + VALID_USERNAME;
+
+    public interface Contact {
+        String EMAIL_VALID_INPUT = "test@gmail.com",
+               INVALID_INPUT_DATA = "###",
+               USERNAME_FIELD_INPUT = "tester",
+               MESSAGE_FIELD_INPUT = "Hello, I'd like to return an item";
     }
 }

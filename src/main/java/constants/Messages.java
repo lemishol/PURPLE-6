@@ -11,6 +11,11 @@ public class Messages {
                 PASSWORD_WITHOUT_SPECIAL_CHARACTERS = "Password must include special characters!",
                 PASSWORD_WITHOUT_NUMBER = "Password must include number!",
                 PASSWORD_WITHOUT_LETTER = "Password must include letter";
-
     }
+  
+   public interface ContactMessages{
+        String REGULAR_MESSAGE = "Thanks for the message!!",
+               ALERT_MESSAGE = "Incorrect data format";
+   }
+
 }
