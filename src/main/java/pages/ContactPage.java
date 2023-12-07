@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static constants.XPath.ContactPage.*;
+import static constants.XPath.LogInPage.USERNAME_FIELD;
 
 public class ContactPage extends BasePage{
     @FindBy(xpath = HEADER)
