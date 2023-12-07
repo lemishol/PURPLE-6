@@ -20,8 +20,8 @@ import static constants.Messages.ContactMessages.*;
 import static constants.Signs.ContactPage.*;
 import static constants.XPath.ContactPage.*;
 public class ContactPageTest {
-    private ContactPage contactPage;
-    private WebDriver driver;
+private ContactPage contactPage;
+private WebDriver driver;
 
     @Before
     public void setUp() {
