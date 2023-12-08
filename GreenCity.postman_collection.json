@@ -197,18 +197,12 @@
 							"raw": "{ \"email\": \"{{email}}\", \"isUbs\": true, \"name\": \"{{name}}\", \"password\": \"{{password}}\"}"
 						},
 						"url": {
-							"raw": "{{URL}}ownSecurity/signUp?lang={{languageCode}}",
+							"raw": "{{URL}}ownSecurity/signUp",
 							"host": [
 								"{{URL}}ownSecurity"
 							],
 							"path": [
 								"signUp"
-							],
-							"query": [
-								{
-									"key": "lang",
-									"value": "{{languageCode}}"
-								}
 							]
 						}
 					},
@@ -227,7 +221,7 @@
 									"pm.test(\"Response time is less than 1000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
 									"});\r",
-									"let signUpWtihNonexEmail = {   \r",
+									"let signUpWithNonexEmail = {   \r",
 									"    \"type\": \"object\",\r",
 									"    \"properties\": {\r",
 									"        \"email\": {\r",
@@ -252,8 +246,19 @@
 									"    ]\r",
 									"}\r",
 									"pm.test(\"Schema is valid\", function() {\r",
-									"    pm.expect(tv4.validate(pm.response.json(), signUpWtihNonexEmail)).to.be.true\r",
-									"});"
+									"    pm.expect(tv4.validate(pm.response.json(), signUpWithNonexEmail)).to.be.true\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Email is in a valid format\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData.email).to.be.a('string').and.to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email should be in a valid format\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript"
 							}
